@@ -1,4 +1,4 @@
-##创建组
+## 创建组
 
 ### api
 
@@ -11,6 +11,28 @@ POST
 ### request payload
 
 {"name":"test","description":""}
+
+
+
+
+
+target_id: 
+
+708de1ea-26cb-42ce-9dc6-28eae2ab5fda
+
+
+
+group_id:
+
+28a2d96882c04124a62a8431142521ff
+
+
+
+28a2d968-82c0-4124-a62a-8431142521ff
+
+
+
+{'Location': '/api/v1/target_groups/4cb2d9045c2c4e5b8fe5d6046d091d6d', 'Content-type': 'application/json; charset=utf8', 'Pragma': 'no-cache', 'Expires': '-1', 'Cache-Control': 'no-cache, must-revalidate', 'Date': 'Wed, 09 Oct 2019 16:00:56 GMT', 'Transfer-Encoding': 'chunked'}
 
 ## 将target加入组中
 

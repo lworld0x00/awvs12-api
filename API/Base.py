@@ -21,6 +21,7 @@ class Base(object):
         self.scan_api = f'{api_base_url}/api/v1/scans'
         self.vuln_api = f'{api_base_url}/api/v1/vulnerabilities'
         self.report_api = f'{api_base_url}/api/v1/reports'
+        self.create_group_api = f'{api_base_url}/api/v1/target_groups'
 
         self.report_template_dict = {
             'affected_items': '11111111-1111-1111-1111-111111111115',
