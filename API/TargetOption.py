@@ -20,7 +20,7 @@ class TargetOption(Base):
             'no_weekends': '6275cc9e-d146-4268-b4b4-4ff747868ecc'
         }
 
-        # self.logger = self.get_logger
+        self.logger = self.get_logger
 
     def set_criticality(self, target_id, criticality, description=None):
         """设置目标危险程度和描述

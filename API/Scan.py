@@ -22,7 +22,7 @@ class Scan(Base):
             'crawl_only': '11111111-1111-1111-1111-111111111117'
         }
 
-        # self.logger = self.get_logger
+        self.logger = self.get_logger
 
     def add(self, target_id, profile_key, report_template_id='', schedule=None, ui_session_id=''):
         """添加扫描任务

@@ -7,9 +7,11 @@
 from .Base import Base
 import requests
 
+
 class Group(Base):
     def __init__(self, api_base_url, api_key):
         super().__init__(api_base_url, api_key)
+        self.logger = self.get_logger
 
     def create_new_group(self, group_name, description = None):
         if not description:
@@ -17,8 +19,8 @@ class Group(Base):
         
         data = {'name': group_name, 'description':description}
         response = requests.post(self.create_group_api, json=data, headers=self.auth_headers, verify=False)
-        if not response.headers:
-            print("创建分组失败~！")
+        if response.status_code != 201:
+            self.logger.error("创建分组失败~！", exc_info=True)
             return False
         else: 
             group_id = response.headers['Location'].split('/')[-1]
@@ -33,8 +35,8 @@ class Group(Base):
         data = {'add':[target_id],'remove':[]}
         print(data)
         response = requests.patch(add_to_group_api, json=data, headers=self.auth_headers, verify=False)
-        if not response:
-            print("添加失败~！")
+        if response.status_code != 206:
+            self.logger.error("添加失败~！", exc_info=True)
             return False
         else:
             print(response.headers)
@@ -46,8 +48,8 @@ class Group(Base):
         data = {'add':[],'remove':[target_id]}
         print(data)
         response = requests.patch(add_to_group_api, json=data, headers=self.auth_headers, verify=False)
-        if not response:
-            print("删除失败~！")
+        if response.status_code != 206:
+            self.logger.error("删除失败~！", exc_info=True)
             return False
         else:
             print(response.headers)

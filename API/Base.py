@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 # @Date    : 2018/7/19 上午2:17
 # @Author  : tudouya (568865013@qq.com)
+# @Editor  : xrayl (1world0x00@gmail.com )
 # @Version : 1.0.0
 
+from logging.config import fileConfig
 from Util import get_file_path
 import requests
 import requests.packages.urllib3
@@ -52,10 +54,10 @@ class Base(object):
 
         return auth_headers
 
-    # @property
-    # def get_logger(self):
-    #     logging_config = get_file_path('awvs12-api/configs/logging.ini')
-    #     # print(logging_config)
-    #     fileConfig(logging_config)
+    @property
+    def get_logger(self):
+        logging_config = get_file_path('awvs12-api/config/logging.ini')
+        print(logging_config)
+        fileConfig(logging_config)
 
-    #     return logging.getLogger('awvs')
+        return logging.getLogger('awvs')

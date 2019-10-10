@@ -12,7 +12,7 @@ class Vuln(Base):
     def __init__(self, api_base_url, api_key):
         super().__init__(api_base_url, api_key)
 
-        # self.logger = self.get_logger
+        self.logger = self.get_logger
 
     def get_all(self, status):
         vuln_get_all_api = f'{self.vuln_api}?q=status:{status}'
