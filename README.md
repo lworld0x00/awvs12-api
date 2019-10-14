@@ -16,15 +16,138 @@
 
 在`config`目录下存放的是与配置相关的脚本，包括但不仅限于`logger`配置。在根目录下,`test_awvs.py`用于测试`API`目录下的类和方法。
 
+使用环境：
+|工具|版本|
+|--|--|
+|python|3.7|
+|pipenv|--|
+
+使用方式：
+```python
+pipenv shell
+pipenv install
+```
+
 ### `API`说明
 #### 扫描相关操作
 ##### `Target`相关操作
 1. 添加
-
+    1. API
+    ```python
+    {api_base_url}/api/v1/targets
+    ```
+    2. method
+    ```python
+    POST
+    ```
+    3. request payload
+    ```python
+        {
+            'address': address,
+            'description': description,
+        }
+    ```
 2. 删除
-3. 获取所有`Target`
+    1. API
+    ```python
+    {api_base_url}/api/v1/targets/{target_id}
+    ```
+    2. method
+    ```python
+    DELETE
+    ```
+    3. request payload
+    无
+
+3. 获取所有`target_id`
+    1. API
+    ```python
+    {api_base_url}/api/v1/targets
+    ```
+    2. method
+    ```python
+    GET
+    ```
+    3. 获取返回`json`中的`targets`字段
+
+4. 搜索
+
+待完善
 
 ##### `Scan`相关操作
+1. 各种扫描对应的参数
+扫描类型：
+```python
+    'full_scan': '11111111-1111-1111-1111-111111111111',
+    'high_risk_vuln': '11111111-1111-1111-1111-111111111112',
+    'xss_vuln': '11111111-1111-1111-1111-111111111116',
+    'sqli_vuln': '11111111-1111-1111-1111-111111111113',
+    'weak_passwords': '11111111-1111-1111-1111-111111111115',
+    'crawl_only': '11111111-1111-1111-1111-111111111117'
+```
+扫描时间类型：
+```python
+1. 定时扫描，time senstive为False
+schedule = {disable: False, start_date: "20180816T000000+0700", time_sensitive: False}
+2. 定时扫描，time senstive为True
+schedule = {disable: False, start_date: "20180816T000000+0700", time_sensitive: True}
+3.周期扫描，每天
+schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=DAILY;INTERVAL=1", time_sensitive: false}
+4.周期扫描，每周
+schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=WEEKLY;INTERVAL=1", time_sensitive: false}
+5.周期扫描，每月
+schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=MONTHLY;INTERVAL=1", time_sensitive: false}
+6.周期扫描，每年
+schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;INTERVAL=1", time_sensitive: false}
+7.自定义
+修改FREQ和INTERVAL即可
+(1)无截止时间格式
+schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;INTERVAL=1", time_sensitive: false}
+(2)有截止时间
+schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;INTERVAL=1;UNTIL=20180830T170000Z", time_sensitive: false}
+```
+上面的参数需要在AWVS12中进一步认证
+2. 添加扫描
+    1. API
+    ```python
+    {api_base_url}/api/v1/scans
+    ```
+    2. method
+    ```python
+    POST
+    ```
+    3. request payload
+    ```python
+    { 
+        'target_id': target_id,
+        'profile_id': 扫描类型,
+        'report_template_id': 结果文档类型,
+        'schedule': 扫描时间类型
+    }
+    ```
+3. 删除扫描
+    1. API
+    ```python
+    {api_base_url}/api/v1/scans
+    ```
+    2. method
+    ```python
+    DELETE
+    ```
+    3. request payload
+    无
+4. 获取扫描结果
+    1. API
+    ```python
+    {api_base_url}/api/v1/scans
+    ```
+    2. method
+    ```python
+    GET
+    ```
+    3. 获取返回JSON中scans字段
+
+5. 获取
 ##### `Group`相关操作
 1. 创建组
     1. `API`
@@ -35,7 +158,7 @@
     ```shell
     POST
     ```
-    3. `request payload`
+    3. request payload
     ```shell
     {"name":"test","description":""}
     ```
