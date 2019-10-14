@@ -107,6 +107,7 @@ schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;IN
 schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;INTERVAL=1;UNTIL=20180830T170000Z", time_sensitive: false}
 ```
 上面的参数需要在AWVS12中进一步认证
+
 2. 添加扫描
     1. API
     ```python
