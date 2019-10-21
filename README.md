@@ -151,11 +151,11 @@ schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;IN
 5. 获取
 ##### `Group`相关操作
 1. 创建组
-    1. `API`
+    1. API
     ```shell
     /api/v1/target_groups
     ```
-    2. `method`
+    2. method
     ```shell
     POST
     ```
@@ -164,29 +164,43 @@ schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;IN
     {"name":"test","description":""}
     ```
 2. 将指定`target`添加到组内
-    1. `API`
+    1. API
     ```shell
     /api/v1/target_groups/{指定模式的group_id}/targets
     ```
-    2. `method`
+    2. method
     ```shell
     PATCH
     ```
-    3. `request payload`
+    3. request payload
     ```shell
     {"add":[target_id],"remove":[]}
     ```
 3. 将指定`target`从组内删除
-    1. `API`
+    1. API
     ```shell
     /api/v1/target_groups/{指定模式的group_id}/targets
     ```
-    2. `method`
+    2. method
     ```shell
     PATCH
     ```
-    3. `request payload`
+    3. request payload
     ```shell
     {"add":[],"remove":[target_id]}
     ```
 #### 结果显示相关
+
+#### 权限配置相关
+
+由于`awvs`安装完成以后，会提供一个可供外网访问的 `web`服务，这就是说，为了安全性必须对能够访问 `awvs`的IP进行限制。下面将说明如何对 `awvs`服务器进行配置。
+
+1. 打开控制面板
+2. 选择`windows firewall defender`
+3. 选择高级设置
+4. 选择入站规则
+5. 双击Acunetix图标
+6. 选择远程计算机栏
+7. ![image-20191021145733145](/Users/1world0x00/mycode/awvs12-api/img/windows.png)
+
+在已授权的计算机处填入允许访问的IP即可。
