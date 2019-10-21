@@ -201,6 +201,6 @@ schedule = {disable: false, recurrence: "DTSTART:20180815T170000Z FREQ=YEARLY;IN
 4. 选择入站规则
 5. 双击Acunetix图标
 6. 选择远程计算机栏
-7. ![image-20191021145733145](/Users/1world0x00/mycode/awvs12-api/img/windows.png)
+7. ![windows](img/windows.png)
 
 在已授权的计算机处填入允许访问的IP即可。
