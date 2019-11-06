@@ -21,10 +21,9 @@ from API.Group import *
 # print(t.get_all())
 
 # 测试group api
-g = Group('https://10.249.203.45:3443/', '1986ad8c0a5b3df4d7028d5f3c06e936cc1ff75bf2ee6421c940058dea8472905')
+g = Group('https://192.168.142.3:3443/', '1986ad8c0a5b3df4d7028d5f3c06e936c80550adad4bf43b889e76c35596689cf')
 # t = Target('https://10.249.203.45:3443/', '1986ad8c0a5b3df4d7028d5f3c06e936cc1ff75bf2ee6421c940058dea8472905')
-group_id = g.create_new_group("hx1")
-print(group_id)
+print(g.get_existed_groups())
 # target_id = t.add("https://jd.com")
 # print(target_id)
 # print(g.add_to_group(target_id,'a5c682b1-a4b3-41d2-9d15-096b64e63c53'))
